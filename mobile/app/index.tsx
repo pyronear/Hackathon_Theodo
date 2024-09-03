@@ -1,10 +1,6 @@
-import { Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { fires } from '@/domain/fires';
+import { FireCard } from '@/view/FireCard';
 
 export default function HomeScreen() {
-  return (
-    <SafeAreaView>
-      <Text>Coucou</Text>
-    </SafeAreaView>
-  );
+  return <FireCard fireItem={fires[0]} />;
 }
