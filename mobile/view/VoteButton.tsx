@@ -5,9 +5,10 @@ const size = 80;
 
 type Props = {
   Icon: IconType;
+  onPress: () => void;
 };
 
-export const VoteButton = ({ Icon }: Props) => {
+export const VoteButton = ({ Icon, onPress }: Props) => {
   return (
     <Pressable
       style={({ pressed }) => [
@@ -16,6 +17,7 @@ export const VoteButton = ({ Icon }: Props) => {
           backgroundColor: pressed ? '#3e73cf' : '#649dfc',
         },
       ]}
+      onPress={onPress}
     >
       <Icon size={size / 2} color="white" />
     </Pressable>
