@@ -4,9 +4,10 @@ import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RenderCardProps } from 'react-native-swipeable-card-stack';
 import { VoteButton } from './VoteButton';
+import { CloseIcon } from './icons/CloseIcon';
+import { FireIcon } from './icons/FireIcon';
+import { ImageIcon } from './icons/ImageIcon';
 import { QuestionMarkIcon } from './icons/QuestionMarkIcon';
-import { ThumbDownIcon } from './icons/ThumbDownIcon';
-import { ThumbUpIcon } from './icons/ThumbUpIcon';
 
 type Props = RenderCardProps<FireType> & {
   onButtonPressed: (direction: SwipeDirection) => void;
@@ -19,9 +20,17 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
       resizeMode="cover"
       style={styles.backgroundImage}
     />
+    <SafeAreaView style={styles.headerComponent} edges={['top']}>
+      <VoteButton
+        Icon={ImageIcon}
+        onPress={() => {
+          console.log('🤡🤡🤡🤡🤡🤡🤡🤡');
+        }}
+      />
+    </SafeAreaView>
     <SafeAreaView style={styles.foregroundComponent} edges={['bottom']}>
       <VoteButton
-        Icon={ThumbDownIcon}
+        Icon={CloseIcon}
         onPress={() => {
           onButtonPressed('left');
         }}
@@ -33,7 +42,7 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
         }}
       />
       <VoteButton
-        Icon={ThumbUpIcon}
+        Icon={FireIcon}
         onPress={() => {
           onButtonPressed('right');
         }}
@@ -59,5 +68,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  headerComponent: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    top: 16,
+    right: 16,
   },
 });
