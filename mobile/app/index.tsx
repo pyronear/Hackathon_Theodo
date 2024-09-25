@@ -1,4 +1,5 @@
 import { useImages } from '@/src/api/images.queries';
+import { useInterceptSwipeUpdate } from '@/src/useInterceptSwipeUpdate';
 import { FireCard } from '@/view/FireCard';
 import { useCallback, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -18,6 +19,9 @@ export default function HomeScreen() {
     },
     [ref],
   );
+
+  const { interceptSwipeUpdate } = useInterceptSwipeUpdate();
+
   if (!images) return null;
 
   return (
@@ -32,6 +36,7 @@ export default function HomeScreen() {
         )}
         lockedDirections={['top']}
         ref={ref}
+        onActiveCardUpdate={interceptSwipeUpdate}
       />
     </>
   );
