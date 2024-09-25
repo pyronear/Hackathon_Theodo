@@ -26,6 +26,8 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
         onPress={() => {
           console.log('🤡🤡🤡🤡🤡🤡🤡🤡');
         }}
+        size={64}
+        backgroundColor="#424969"
       />
     </SafeAreaView>
     <SafeAreaView style={styles.foregroundComponent} edges={['bottom']}>
@@ -34,18 +36,24 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
         onPress={() => {
           onButtonPressed('left');
         }}
+        size={80}
+        backgroundColor="#F7566B"
       />
       <VoteButton
         Icon={QuestionMarkIcon}
         onPress={() => {
           onButtonPressed('bottom');
         }}
+        size={64}
+        backgroundColor="#6F93B7"
       />
       <VoteButton
         Icon={FireIcon}
         onPress={() => {
           onButtonPressed('right');
         }}
+        size={80}
+        backgroundColor="#E95020"
       />
     </SafeAreaView>
   </View>
