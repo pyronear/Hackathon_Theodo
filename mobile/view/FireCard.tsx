@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RenderCardProps } from 'react-native-swipeable-card-stack';
 import { VoteButton } from './VoteButton';
+import { QuestionMarkIcon } from './icons/QuestionMarkIcon';
 import { ThumbDownIcon } from './icons/ThumbDownIcon';
 import { ThumbUpIcon } from './icons/ThumbUpIcon';
 
@@ -23,6 +24,12 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
         Icon={ThumbDownIcon}
         onPress={() => {
           onButtonPressed('left');
+        }}
+      />
+      <VoteButton
+        Icon={QuestionMarkIcon}
+        onPress={() => {
+          onButtonPressed('top');
         }}
       />
       <VoteButton

@@ -28,7 +28,7 @@ export default function HomeScreen() {
         renderCard={(props) => (
           <FireCard {...props} onButtonPressed={onButtonPressed} />
         )}
-        lockedDirections={['bottom', 'top']}
+        lockedDirections={['bottom']}
         ref={ref}
       />
     </>
