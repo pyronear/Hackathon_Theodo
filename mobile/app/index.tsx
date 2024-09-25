@@ -1,4 +1,4 @@
-import { fires } from '@/domain/fires';
+import { useImages } from '@/src/api/images.queries';
 import { FireCard } from '@/view/FireCard';
 import { useCallback, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -9,6 +9,7 @@ import {
 } from 'react-native-swipeable-card-stack';
 
 export default function HomeScreen() {
+  const { images } = useImages();
   const ref = useRef<SwipeableCardStackRef>(null);
 
   const onButtonPressed = useCallback(
@@ -17,6 +18,7 @@ export default function HomeScreen() {
     },
     [ref],
   );
+  if (!images) return null;
 
   return (
     <>
@@ -24,7 +26,7 @@ export default function HomeScreen() {
         <Text style={{ fontSize: 22 }}>🔥🔥🔥</Text>
       </View>
       <SwipeableCardStack
-        data={fires}
+        data={images}
         renderCard={(props) => (
           <FireCard {...props} onButtonPressed={onButtonPressed} />
         )}

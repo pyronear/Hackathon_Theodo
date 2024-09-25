@@ -1,5 +1,5 @@
-import { FireItem } from '@/domain/FireItem';
 import { SwipeDirection } from '@/domain/SwipeDirection';
+import { FireType } from '@/src/api/images.types';
 import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RenderCardProps } from 'react-native-swipeable-card-stack';
@@ -7,14 +7,14 @@ import { VoteButton } from './VoteButton';
 import { ThumbDownIcon } from './icons/ThumbDownIcon';
 import { ThumbUpIcon } from './icons/ThumbUpIcon';
 
-type Props = RenderCardProps<FireItem> & {
+type Props = RenderCardProps<FireType> & {
   onButtonPressed: (direction: SwipeDirection) => void;
 };
 
 export const FireCard = ({ data, onButtonPressed }: Props) => (
   <View style={styles.container}>
     <Image
-      source={{ uri: data.url }}
+      source={{ uri: data.gif }}
       resizeMode="cover"
       style={styles.backgroundImage}
     />
