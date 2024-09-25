@@ -17,6 +17,15 @@ export const useImages = () => {
           id: data.data.event_id,
         });
       }
+
+      const koalaImage =
+        'https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
+      images = [
+        ...images.slice(0, 10),
+        { gif: koalaImage, img_list: [], id: 0 },
+        ...images.slice(10),
+      ];
       return images;
     },
   });
