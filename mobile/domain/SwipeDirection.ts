@@ -1,1 +1,1 @@
-export type SwipeDirection = 'left' | 'right' | 'top';
+export type SwipeDirection = 'left' | 'right' | 'bottom';

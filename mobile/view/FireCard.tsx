@@ -29,7 +29,7 @@ export const FireCard = ({ data, onButtonPressed }: Props) => (
       <VoteButton
         Icon={QuestionMarkIcon}
         onPress={() => {
-          onButtonPressed('top');
+          onButtonPressed('bottom');
         }}
       />
       <VoteButton
