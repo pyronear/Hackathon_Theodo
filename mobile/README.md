@@ -8,10 +8,22 @@
    npm install
    ```
 
+   or if you use yarn
+
+   ```
+   yarn install
+   ```
+
 2. Start the app
 
    ```bash
     npx expo start
+   ```
+
+   or if you use yarn
+
+   ```
+   yarn start
    ```
 
 3. You can then open it on your mobile phone in the [Expo Go](https://expo.dev/go) application.
