@@ -37,7 +37,8 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "^15.6.0",
     "react-native-swipeable-card-stack": "^1.8.0",
-    "react-native-web": "~0.19.10"
+    "react-native-web": "~0.19.10",
+    "react-native-zoom-toolkit": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
