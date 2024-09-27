@@ -1,6 +1,6 @@
 import { useImages } from '@/src/api/images.queries';
-import { useInterceptSwipeUpdate } from '@/src/useInterceptSwipeUpdate';
 import { FireCard } from '@/src/view/FireCard';
+import { useInterceptSwipeUpdate } from '@/src/view/useInterceptSwipeUpdate';
 import { useCallback, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {
