@@ -1,9 +1,13 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { Image, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getAspectRatioSize, ResumableZoom, useImageResolution } from 'react-native-zoom-toolkit';
-import { VoteButton } from '../view/VoteButton';
-import { CloseIcon } from '../view/icons/CloseIcon';
+import {
+  getAspectRatioSize,
+  ResumableZoom,
+  useImageResolution,
+} from 'react-native-zoom-toolkit';
+import { VoteButton } from '../src/view/VoteButton';
+import { CloseIcon } from '../src/view/icons/CloseIcon';
 
 export default function ImageZoom() {
   const router = useRouter();
@@ -24,9 +28,7 @@ export default function ImageZoom() {
 
   return (
     <>
-      <Stack.Screen
-        options={{headerShown: false}}
-      />
+      <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <ResumableZoom maxScale={resolution}>
           <Image
@@ -46,7 +48,7 @@ export default function ImageZoom() {
       </View>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

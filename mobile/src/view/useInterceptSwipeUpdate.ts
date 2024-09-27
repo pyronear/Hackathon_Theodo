@@ -1,6 +1,6 @@
 import type { SwipeUpdate } from 'react-native-swipeable-card-stack';
-import { useSendFireResult } from './api/images.queries';
-import type { FireType } from './api/images.types';
+import { useSendFireResult } from '../api/images.queries';
+import type { FireType } from '../api/images.types';
 
 export const useInterceptSwipeUpdate = () => {
   const { mutate } = useSendFireResult();
