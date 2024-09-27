@@ -1,5 +1,5 @@
-import { SwipeDirection } from '@/domain/SwipeDirection';
 import { FireType } from '@/src/api/images.types';
+import { SwipeDirection } from '@/src/domain/SwipeDirection';
 import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RenderCardProps } from 'react-native-swipeable-card-stack';
