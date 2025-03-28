@@ -7,23 +7,25 @@ export const useImages = () => {
   const { data: images } = useQuery({
     queryKey: ['images'],
     queryFn: async () => {
-      let images: FireType[] = [];
-      for (let index = 0; index < 50; index++) {
-        try {
-          const data = await axios.get(`${API_URL}/get_unlabeled_random_event`);
-
-          images.push({
+      const promises = Array.from({ length: 50 }, () =>
+        axios
+          .get(`${API_URL}/get_unlabeled_random_event`)
+          .then((data) => ({
             gif: data.data.gif,
             img_list: data.data.img_list,
             id: data.data.event_id,
-          });
+          }))
+          .catch((error) => {
+            console.error(error);
+            return null;
+          }),
+      );
 
-          return images;
-        } catch (error) {
-          console.error(error);
-          return [];
-        }
-      }
+      const results = await Promise.all(promises);
+      const images = results.filter(
+        (result): result is FireType => result !== null,
+      );
+      return images;
     },
   });
 
