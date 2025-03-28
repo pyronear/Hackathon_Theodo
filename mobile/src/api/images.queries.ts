@@ -1,3 +1,4 @@
+import { API_URL } from '@/config';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { FireType } from './images.types';
@@ -9,9 +10,7 @@ export const useImages = () => {
       let images: FireType[] = [];
       for (let index = 0; index < 50; index++) {
         try {
-          const data = await axios.get(
-            'http://141.94.127.211:8000/get_unlabeled_random_event',
-          );
+          const data = await axios.get(`${API_URL}/get_unlabeled_random_event`);
 
           images.push({
             gif: data.data.gif,
@@ -42,7 +41,7 @@ export const useImages = () => {
 export const useSendFireResult = () => {
   const { mutate } = useMutation({
     mutationFn: async (data: { id: number; label: number }) => {
-      axios.post(`http://141.94.127.211:8000/labelize_event/${data.id}`, {
+      axios.post(`${API_URL}/labelize_event/${data.id}`, {
         label: data.label,
       });
     },
