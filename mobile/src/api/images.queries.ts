@@ -1,3 +1,4 @@
+import { API_URL } from '@/config';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { FireType } from './images.types';
@@ -6,33 +7,25 @@ export const useImages = () => {
   const { data: images } = useQuery({
     queryKey: ['images'],
     queryFn: async () => {
-      let images: FireType[] = [];
-      for (let index = 0; index < 50; index++) {
-        try {
-          const data = await axios.get(
-            'http://141.94.127.211:8000/get_unlabeled_random_event',
-          );
-
-          images.push({
+      const promises = Array.from({ length: 50 }, () =>
+        axios
+          .get(`${API_URL}/get_unlabeled_random_event`)
+          .then((data) => ({
             gif: data.data.gif,
             img_list: data.data.img_list,
             id: data.data.event_id,
-          });
+          }))
+          .catch((error) => {
+            console.error(error);
+            return null;
+          }),
+      );
 
-          const koalaImage =
-            'https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-
-          images = [
-            ...images.slice(0, 10),
-            { gif: koalaImage, img_list: [], id: 0 },
-            ...images.slice(10),
-          ];
-          return images;
-        } catch (error) {
-          console.error(error);
-          return [];
-        }
-      }
+      const results = await Promise.all(promises);
+      const images = results.filter(
+        (result): result is FireType => result !== null,
+      );
+      return images;
     },
   });
 
@@ -42,7 +35,7 @@ export const useImages = () => {
 export const useSendFireResult = () => {
   const { mutate } = useMutation({
     mutationFn: async (data: { id: number; label: number }) => {
-      axios.post(`http://141.94.127.211:8000/labelize_event/${data.id}`, {
+      axios.post(`${API_URL}/labelize_event/${data.id}`, {
         label: data.label,
       });
     },
