@@ -2,7 +2,7 @@
 
 ## Running the app
 
-1. Install node: https://nodejs.org/en/download/package-manager
+1. Install Node.js 24.22.1, as pinned in `.nvmrc`: https://nodejs.org/en/download/package-manager
 2. Install dependencies
 
    ```bash

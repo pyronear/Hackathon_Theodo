@@ -11,6 +11,9 @@
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
   "jest": {
     "preset": "jest-expo"
   },
